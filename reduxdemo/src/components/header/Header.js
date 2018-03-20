@@ -29,8 +29,20 @@ class Header extends Component {
 			this.setState({
 				todos:this.state.todos
 			})
+			this.setState({
+				value:''
+			})
 		}
 		e.preventDefault();
+	}
+
+	deleteTodo(itemindex){
+		const arr = this.state.todos.filter((todo,index)=>{
+			return index !== itemindex
+		})
+		this.setState({
+			todos:arr
+		})
 	}
 	
 	render() {
@@ -43,7 +55,7 @@ class Header extends Component {
 				{
 					this.state.todos.map((todo,index)=>{
 						
-						return (<Items key={index} value={todo.value} />)
+						return (<Items key={index} value={todo.value} index={index} deleteTodo={this.deleteTodo.bind(this)}/>)
 					})
 				}
 			</ul>
