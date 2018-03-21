@@ -1,7 +1,12 @@
 import React, {Component} from 'react';
 import Items from '../item/item'
+import { connect } from 'react-redux'
+import  addTodo  from '../../reducers/reducer'
 
 class Header extends Component {
+
+	// const { dispatch } = this.props
+
 	constructor(props){
 		super(props);
 		this.state = {
@@ -11,7 +16,12 @@ class Header extends Component {
 			}]
 		}
 	}
-	
+
+	componentDidMount(){
+		console.log(addTodo)
+		console.log(this.props.dispatch)
+	}
+
 	changeValue(e){
 		this.setState({
 			value:e.target.value
@@ -20,7 +30,7 @@ class Header extends Component {
 	}
 	
 	changeConfirm(e){
-		if(e.keyCode==13){
+		if(e.keyCode===13){
 			let val = e.target.value;
 			let item = {
 				value:val
@@ -29,6 +39,9 @@ class Header extends Component {
 			this.setState({
 				todos:this.state.todos
 			})
+
+			this.props.dispatch(addTodo(this.state.todos))
+
 			this.setState({
 				value:''
 			})
@@ -50,8 +63,6 @@ class Header extends Component {
 			<div className="com-header">
 			<input type="text" value={this.state.value} onChange={this.changeValue.bind(this)} onKeyUp={this.changeConfirm.bind(this)}/>
 			<ul>
-				
-
 				{
 					this.state.todos.map((todo,index)=>{
 						
@@ -64,4 +75,15 @@ class Header extends Component {
 	}
 }
 
-export default Header;
+const mapStateToProps = (state) => {
+	return {
+	  todos: state.todos
+	}
+} 
+const mapDispatchToProps = {
+	changeConfirm: () => {
+	  type: 'ADD_TODO'
+	}
+}  
+
+export default connect(mapStateToProps,mapDispatchToProps)(Header);
