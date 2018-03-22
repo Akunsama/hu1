@@ -16,6 +16,8 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "less": "^3.0.1",
+    "less-loader": "^4.1.0",
     "redux-devtools": "^3.4.1"
   }
 }

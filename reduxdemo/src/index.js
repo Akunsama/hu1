@@ -6,6 +6,7 @@ import registerServiceWorker from './registerServiceWorker';
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import todoApp from './reducers/reducer'
+import 'antd/dist/antd.css';
 
 let store = createStore(todoApp)
 
