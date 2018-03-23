@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import { Row, Col } from 'antd';
 import { Menu, Icon } from 'antd';
 import './top.css'
 const SubMenu = Menu.SubMenu;
