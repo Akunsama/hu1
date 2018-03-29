@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, Form, Icon, Input, Button } from 'antd';
+import { Row, Col } from 'antd';
 import SearchForm from '../searchForm/searchForm'
 import SearchTable from '../searchTable/searchTable'
 import './content.css'
