@@ -6,19 +6,39 @@ import './content.css'
 
 
 class content extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            data:[]
+        }
+    }
 
+    pushValue(value){
+        this.state.data.push(value)
+        this.setState({
+            data:this.state.data
+        })
+    }
+
+    deleteValue(value){
+        let arr=this.state.data.filter((item,index)=>{
+            return item.key!=value
+        })
+        this.setState({
+            data:arr
+        })
+        console.log(this.state.data,value)
+    }
 
     render() {
-
-
         return (
             <div>
                 <Row>
                     <Col span={1}>col-8</Col>
                     <Col span={22}>
                         <div className="mainBox">
-                            <SearchForm />
-                            <SearchTable />    
+                            <SearchForm pushValue={this.pushValue.bind(this)} />
+                            <SearchTable tableData={this.state.data} deleteValue={this.deleteValue.bind(this)}/>    
                         </div>
                     </Col>
                     <Col span={1}>col-8</Col>
