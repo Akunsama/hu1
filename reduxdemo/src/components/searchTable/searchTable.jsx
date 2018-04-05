@@ -28,7 +28,7 @@ class searchTable extends Component {
                         key="action"
                         render={(text, record) => (  
                             <span>
-                                <a href="#" onClick={this.props.deleteValue(record.key)}>点击操作</a>
+                                <a href="#" onClick={this.props.deleteValue.bind(this,record.key)}>点击操作</a>
                             </span>
                         )}
                     />

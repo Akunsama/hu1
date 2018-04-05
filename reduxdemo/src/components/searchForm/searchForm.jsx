@@ -12,16 +12,16 @@ class searchForm extends Component{
 
     }
     componentDidMount() {
-        this.props.form.validateFields();
+        // this.props.form.validateFields();
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                this.state.index+=1
+                // this.state.index+=1
                 this.setState({
-                    index:this.state.index
+                    index:this.state.index +1
                 })
                 values.key = this.state.index;
                 this.props.pushValue(values)

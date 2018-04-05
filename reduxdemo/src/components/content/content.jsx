@@ -14,10 +14,13 @@ class content extends Component {
     }
 
     pushValue(value){
-        this.state.data.push(value)
+        // this.state.data.push(value)
         this.setState({
-            data:this.state.data
+            data:[...this.state.data, value]
         })
+       setTimeout(() => {
+        console.log(value,this.state.data)
+       }, 100);
     }
 
     deleteValue(value){
@@ -27,7 +30,7 @@ class content extends Component {
         this.setState({
             data:arr
         })
-        console.log(this.state.data,value)
+        console.log("这里出现了吗",value,arr)
     }
 
     render() {
