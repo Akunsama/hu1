@@ -186,6 +186,9 @@ module.exports = {
                   ],
                 },
               },
+              {
+                loader: require.resolve('less-loader'),options: { javascriptEnabled: true }
+              }
             ],
           },
           // "file" loader makes sure those assets get served by WebpackDevServer.

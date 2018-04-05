@@ -1,0 +1,50 @@
+.navSearch {
+    background-color: white;
+    height: 100px;
+    padding: 15px 0;
+    >div {
+        float: left;
+        &.navSearch-nav {
+            margin-left: 200px;
+            ul {
+                height: 50px;
+                line-height: 50px;
+                li {
+                    margin-right: 20px;
+                }
+            }
+        }
+        display: inline-block;
+        font-size: 16px;
+    }
+    .navSearch-search{
+        float: right;
+        .ant-input-affix-wrapper{
+            height: 280px;
+            height: 50px;
+            input{
+                width: 300px;
+                border-radius: 0;
+                &.ant-input:focus,&.ant-input:hover,{
+                    border-color: #ff6700;
+                    outline: 0;
+                    -webkit-box-shadow: none;
+                    box-shadow: none;
+                }
+            }
+            .ant-input-suffix button{
+                margin-right: 1px;
+                width: 48px;
+                height: 48px;
+                border-radius: 0;
+                &.ant-btn-primary {
+                    color: #333;
+                    background-color: transparent;
+                    border: none;
+                    border-left: 1px solid #e0e0e0;
+                }
+            }
+        }
+    }
+}
+
