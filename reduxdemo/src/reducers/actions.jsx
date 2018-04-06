@@ -7,5 +7,5 @@ export function addTodo(payload) {
 }
 
 export function addProductIndex(payload) {
-  return { type: "ADD_PRODUCTINDEX", payload };
+  return { type: "ADD_PRODUCTINDEX", payload};
 }

@@ -15,12 +15,12 @@ function todos(state = initTodoState, action) {
   }
 }
 
-function proIndex(state = initProductState, { payload, type}) {
-    switch (type) {
+function proIndex(state = initProductState, action = {}) {
+    switch (action.type) {
         case "ADD_PRODUCTINDEX":
         return{
-          show: payload.show,
-          index: payload.index
+          ...state,
+          ...action.payload
         };
         default:
           return state;

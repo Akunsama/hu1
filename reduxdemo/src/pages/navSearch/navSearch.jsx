@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import AutoComplete from '../../components/autoComplete/autoComplete'
+import AutoComplete from "../../components/autoComplete/autoComplete";
 
-import { connect } from 'react-redux'
-import { addProductIndex } from '../../reducers/actions'
+import { connect } from "react-redux";
+import { addProductIndex } from "../../reducers/actions";
 
 const data = [
   {
@@ -39,30 +39,33 @@ function Searchnav(props) {
   return (
     <ul>
       {data.map(item => {
-        return <li key={item.index} onMouseOver={()=>props.hoverIt(item.index)} onMouseLeave={()=>props.leaveIt()}>{item.name}</li>;
+        return (
+          <li
+            key={item.index}
+            onMouseOver={() => props.hoverIt(item.index)}
+          >
+            {item.name}
+          </li>
+        );
       })}
     </ul>
   );
-  
 }
 
 class NavSearch extends Component {
+  hoverIt = index => {
+    this.props.addProductIndex({
+      index: index,
+      show: true
+    });
+  };
 
-  hoverIt=(index)=>{
-     
-     this.props.dispatch(addProductIndex({
-      index:index,
-      show:true
-    }))
-  }
-
-  leaveIt=()=>{
-     
-     this.props.dispatch(addProductIndex({
-      index:0,
-      show:false
-    }))
-  }
+  leaveIt = () => {
+    this.props.addProductIndex({
+      index: 0,
+      show: false
+    });
+  };
 
   render() {
     return (
@@ -71,9 +74,13 @@ class NavSearch extends Component {
           <div>
             <img src="http://placeHold.it/60x60" />
           </div>
+          <div>{this.props.proIndex.index}</div>
         </div>
-        <div className="navSearch-nav">
-          <Searchnav hoverIt={(index)=>this.hoverIt(index)} leaveIt={()=>this.leaveIt()}/>
+        <div className="navSearch-nav" onMouseLeave={() => this.leaveIt()}>
+          <Searchnav
+            hoverIt={index => this.hoverIt(index)}
+            
+          />
         </div>
         <div className="navSearch-search">
           <AutoComplete />
@@ -83,10 +90,17 @@ class NavSearch extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-      return {
-         proIndex: state.proIndex
-      }
-  } 
+const mapStateToProps = state => {
+  return {
+    proIndex: state.proIndex
+  };
+};
 
-export default connect(mapStateToProps)(NavSearch);
+export default connect(
+  state => ({
+    proIndex: state.proIndex
+  }),
+  {
+    addProductIndex
+  }
+)(NavSearch);

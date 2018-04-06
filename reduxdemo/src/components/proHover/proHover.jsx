@@ -8,20 +8,17 @@ class proHover extends Component {
   }
 
   render() {
-    console.log("111111111111111111111111",this.props.proIndex)
     const classname = this.props.proIndex.show===true?"show":"";
     return (
-      <div className={"proHover "+ classname} onClick={console.log(this)}>
-        {this.props.proIndex}
+      <div className={`proHover ${classname}`}>
         <div />
       </div>
     );
   }
 }
 const mapStateToProps = state => {
-  console.log("这里",state.proIndex)
   return {
-    proIndex: state.proIndex.index
+    proIndex: state.proIndex
   };
 };
 

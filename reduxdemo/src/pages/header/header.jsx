@@ -17,8 +17,8 @@ class Header extends Component {
       <div className="webHeader">
         <div className="webHeader-left">
           <Menu onClick={this.handleClick} mode="horizontal">
-            <Menu.Item key="xiaomi">小米商城</Menu.Item>
-            <Menu.Item key="miui">MIUI</Menu.Item>
+            <Menu.Item key="xiaomi">商城</Menu.Item>
+            <Menu.Item key="miui">UI</Menu.Item>
             <Menu.Item key="lot">loT</Menu.Item>
             <Menu.Item key="yun">云服务</Menu.Item>
             <Menu.Item key="shui">水滴</Menu.Item>
