@@ -1,21 +1,36 @@
-import { combineReducers } from 'redux'
-import { ADD_TODO } from './actions'
+import { combineReducers } from "redux";
 
-const initState = []
+const initTodoState = [];
+const initProductState = {
+  index:0,
+  show:false
+};
 
-function todos(state = initState, action) {
-switch (action.type) {
-case ADD_TODO:
-return [
-...todos, action.payload
-]
-default:
-return state
+function todos(state = initTodoState, action) {
+  switch (action.type) {
+    case "ADD_TODO":
+      return [...todos, action.payload];
+    default:
+      return state;
+  }
 }
+
+function proIndex(state = initProductState, { payload, type}) {
+    switch (type) {
+        case "ADD_PRODUCTINDEX":
+        return{
+          show: payload.show,
+          index: payload.index
+        };
+        default:
+          return state;
+      }
 }
+
 
 const todoApp = combineReducers({
-todos
-})
+  todos,
+  proIndex
+});
 
-export default todoApp
+export default todoApp;

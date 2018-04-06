@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import AutoComplete from '../../components/autoComplete/autoComplete'
 
+import { connect } from 'react-redux'
+import { addProductIndex } from '../../reducers/actions'
+
 const data = [
   {
     name: "手机",
@@ -36,13 +39,31 @@ function Searchnav(props) {
   return (
     <ul>
       {data.map(item => {
-        return <li key={item.index}>{item.name}</li>;
+        return <li key={item.index} onMouseOver={()=>props.hoverIt(item.index)} onMouseLeave={()=>props.leaveIt()}>{item.name}</li>;
       })}
     </ul>
   );
+  
 }
 
 class NavSearch extends Component {
+
+  hoverIt=(index)=>{
+     
+     this.props.dispatch(addProductIndex({
+      index:index,
+      show:true
+    }))
+  }
+
+  leaveIt=()=>{
+     
+     this.props.dispatch(addProductIndex({
+      index:0,
+      show:false
+    }))
+  }
+
   render() {
     return (
       <div className="navSearch">
@@ -52,7 +73,7 @@ class NavSearch extends Component {
           </div>
         </div>
         <div className="navSearch-nav">
-          <Searchnav />
+          <Searchnav hoverIt={(index)=>this.hoverIt(index)} leaveIt={()=>this.leaveIt()}/>
         </div>
         <div className="navSearch-search">
           <AutoComplete />
@@ -62,4 +83,10 @@ class NavSearch extends Component {
   }
 }
 
-export default NavSearch;
+const mapStateToProps = (state) => {
+      return {
+         proIndex: state.proIndex
+      }
+  } 
+
+export default connect(mapStateToProps)(NavSearch);
