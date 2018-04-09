@@ -2,11 +2,17 @@ import React, { Component } from "react";
 
 import { Menu } from "antd";
 
+import { Link } from 'react-router-dom'
+
 class Header extends Component {
-  state = {};
+  constructor(props){
+    super(props)
+    this.state={
+      number:1
+    }
+  }
 
   handleClick = e => {
-    console.log("click ", e);
     this.setState({
       current: e.key
     });
@@ -17,8 +23,8 @@ class Header extends Component {
       <div className="webHeader">
         <div className="webHeader-left">
           <Menu onClick={this.handleClick} mode="horizontal">
-            <Menu.Item key="xiaomi">商城</Menu.Item>
-            <Menu.Item key="miui">UI</Menu.Item>
+            <Menu.Item key="xiaomi"><Link to='/'>商城</Link></Menu.Item>
+            <Menu.Item key="miui"><Link to={`/ui/${this.state.number}`}>UI</Link></Menu.Item>
             <Menu.Item key="lot">loT</Menu.Item>
             <Menu.Item key="yun">云服务</Menu.Item>
             <Menu.Item key="shui">水滴</Menu.Item>
